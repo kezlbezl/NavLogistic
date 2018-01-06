@@ -1,19 +1,22 @@
 {
-  "name": "navlogistivserver",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kezlbezl/NavLogistic.git"
-  },
-  "author": "Anton kozlov",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kezlbezl/NavLogistic/issues"
-  },
-  "homepage": "https://github.com/kezlbezl/NavLogistic#readme"
+    "name": "navlogistivserver",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kezlbezl/NavLogistic.git"
+    },
+    "author": "Anton kozlov",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kezlbezl/NavLogistic/issues"
+    },
+    "homepage": "https://github.com/kezlbezl/NavLogistic#readme",
+    "dependencies": {
+        "express": "4.16.2"
+    }
 }
