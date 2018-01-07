@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
-const model = require('../models/Manager');
+const model = require('../models/Account');
 
-const Manager = mongoose.model('Manager');
+const Account = mongoose.model('Account');
 
 module.exports = {
     setUpConnection() {
-        mongoose.connect(`mongodb://localhost/manager`)
+        mongoose.connect(`mongodb://localhost/navlogistic`)
     },
-    getManagerList() {
-        return Manager.find();
+    getAccountList() {
+        return Account.find();
     },
-    createManger(data) {
-        const manager = new Manager({
+    createAccount(data) {
+        const account = new Account({
             login: data.login,
             password: data.password,
             email: data.email,
@@ -20,9 +20,9 @@ module.exports = {
             description: data.description,
             createdAt: new Date()
         });
-        return manager.save();
+        return account.save();
     },
-    deleteManager(id) {
-        return Manager.findById(id).remove();
+    deleteAccount(id) {
+        return Account.findById(id).remove();
     }
 }

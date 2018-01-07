@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
-const ManagerSchema = new Schema({
+const AccountSchema = new Schema({
     login: {
         type: String,
         required: true
@@ -28,4 +28,4 @@ const ManagerSchema = new Schema({
         type: Date
     }
 });
-const Manager = mongoose.model('Manager', ManagerSchema);
+const Account = mongoose.model('Account', AccountSchema);
