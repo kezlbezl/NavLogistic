@@ -1,0 +1,9 @@
+{
+    "apiPrefix": "http://localhost:7777",
+    "serverPort": "7777",
+    "db": {
+        "name": "navlogistic",
+        "host": "localhost",
+        "port": 27017
+    }
+}
