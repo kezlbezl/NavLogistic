@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const config = require('../config.json');
 const db = require('./db/db.js');
 
 db.setUpConnection();
@@ -25,6 +26,6 @@ app.delete('/accounts/:id', (req, resp) => {
         .then(data => resp.send(data));
 })
 
-app.listen(7777, 'localhost', () => {
-    console.log('Server started on port 7777');
+app.listen(config.serverPort, 'localhost', () => {
+    console.log(`Server started on port ${config.serverPort}`);
 })

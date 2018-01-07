@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const model = require('../models/Account');
+const config = require('../../config.json');
 
 const Account = mongoose.model('Account');
 
 module.exports = {
     setUpConnection() {
-        mongoose.connect(`mongodb://localhost/navlogistic`)
+        mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`)
     },
     getAccountList() {
         return Account.find();
