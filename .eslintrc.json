@@ -1,0 +1,18 @@
+{
+    "extends": "standard",
+    "env": {
+        "amd": true,
+        "browser": true,
+        "jquery": true,
+        "node": false
+    },
+    "globals": {
+        "angular": false,
+        "google": false,
+        "_": false
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "spaced-comment": ["error", "never"]
+    }
+}

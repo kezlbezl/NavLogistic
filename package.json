@@ -19,5 +19,8 @@
     "dependencies": {
         "express": "4.16.2",
         "mongoose": "5.0.0-rc2"
+    },
+    "devDependencies": {
+        "eslint": "4.15.0"
     }
 }
