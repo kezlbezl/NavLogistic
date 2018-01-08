@@ -9,7 +9,9 @@ const db = require('./db/db.js');
 db.setUpConnection();
 const app = express();
 
+app.use('/public', express.static('./client/public'));
 app.use(bodyParser.json());
+
 app.get('/', (req, resp) => {
     resp.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 })
