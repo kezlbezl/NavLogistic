@@ -4,10 +4,9 @@
         "amd": true,
         "browser": true,
         "jquery": true,
-        "node": false
+        "node": true
     },
     "globals": {
-        "angular": false,
         "google": false,
         "_": false
     },
