@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/kezlbezl/NavLogistic#readme",
     "dependencies": {
+        "bluebird": "3.5.1",
         "express": "4.16.2",
         "mongoose": "4.13.9"
     },

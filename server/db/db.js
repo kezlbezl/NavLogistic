@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 const model = require('../models/Account');
 const config = require('../../config.json');
 
