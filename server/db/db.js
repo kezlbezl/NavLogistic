@@ -26,9 +26,13 @@ module.exports = {
             description: data.description,
             createdAt: new Date()
         });
-        return account.save();
+        return account.save(err => {
+            if (err) console.error('AccountCollection', err);
+        });
     },
     deleteAccount(id) {
-        return Account.findById(id).remove();
+        return Account.findById(id).remove(err => {
+            if (err) console.error('AccountCollection', err);
+        });
     }
 }

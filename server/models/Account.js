@@ -35,5 +35,7 @@ const AccountSchema = new Schema({
     createdAt: {
         type: Date
     }
+}, {
+    collection: 'AccountCollection'
 });
 const Account = mongoose.model('Account', AccountSchema);
