@@ -10,17 +10,25 @@ const AccountSchema = new Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        required: true
+    },
     email: {
         type: String
     },
-    firstName: {
+    fullName: {
+        type: String,
+        required: true
+    },
+    /* firstName: {
         type: String,
         required: true
     },
     lastName: {
         type: String,
         required: true
-    },
+    }, */
     description: {
         type: String
     },
