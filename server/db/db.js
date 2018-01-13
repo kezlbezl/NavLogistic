@@ -14,7 +14,12 @@ module.exports = {
         )
     },
     getAccountList() {
-        return Account.find();
+        return Account
+            .find({})
+            .lean()
+            .exec((err, accountList) => {
+                if (err) return console.error('AccountCollection', err);
+            });
     },
     createAccount(data) {
         const account = new Account({
