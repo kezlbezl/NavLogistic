@@ -1,18 +1,19 @@
-'use strict'
+'use strict';
 
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const config = require('../config.json');
 const db = require('./db/db.js');
+const auth = require('./authentication/authentication.js');
 
 db.setUpConnection();
-const app = express();
 
 app.use('/public', express.static('./client/public'));
 app.use(bodyParser.json());
 
-app.get('/', (req, resp) => {
+app.get('/', auth.checkAuth, (req, resp) => {
     resp.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
 })
 app.get('/accounts', (req, resp) => {
