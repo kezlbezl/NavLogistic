@@ -27,12 +27,12 @@ module.exports = {
             createdAt: new Date()
         });
         return account.save(err => {
-            if (err) console.error('AccountCollection', err);
+            if (err) return console.error('AccountCollection', err);
         });
     },
     deleteAccount(id) {
         return Account.findById(id).remove(err => {
-            if (err) console.error('AccountCollection', err);
+            if (err) return console.error('AccountCollection', err);
         });
     }
 }
