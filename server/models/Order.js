@@ -6,13 +6,26 @@ const OrderSchema = new Schema({
         type: String,
         required: true
     },
-    deviceTypes: {
-        type: [String],
+    equipment: [{
+        deviceType: {
+            type: String,
+            required: true
+        },
+        amount: {
+            type: Number,
+            required: true
+        }
+    }],
+    DDD: {
+        type: String,
         required: true
     },
-    amount: {
-        type: Number,
+    deliveryMethod: {
+        type: String,
         required: true
+    },
+    courierService: {
+        type: String
     },
     description: {
         type: String
