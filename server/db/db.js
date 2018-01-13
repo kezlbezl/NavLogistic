@@ -6,7 +6,11 @@ const Account = mongoose.model('Account');
 
 module.exports = {
     setUpConnection() {
-        mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`)
+        mongoose.connect(
+            `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
+                useMongoClient: true
+            }
+        )
     },
     getAccountList() {
         return Account.find();
