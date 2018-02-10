@@ -12,7 +12,9 @@ passport.use(new Strategy(opts, function(jwt_payload, done) {
 module.exports = {
     checkAuth(req, resp, next) {
         passport.authenticate('jwt', { session: false }, (err, decryptToken, jwtError) => {
-            if (jwtError != void(0) || err != void(0)) return resp.send(jwtError);
+            if (jwtError != void(0) || err != void(0)) {
+                return resp.send(jwtError.toString());
+            }
             resp.user = decryptToken;
             next();
         })(req, resp, next);

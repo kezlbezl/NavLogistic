@@ -16,10 +16,6 @@ const OrderSchema = new Schema({
             required: true
         }
     }],
-    DDD: {
-        type: String,
-        required: true
-    },
     deliveryMethod: {
         type: String,
         required: true
