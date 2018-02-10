@@ -25,9 +25,9 @@ module.exports = {
         const account = new Account({
             login: data.login,
             password: data.password,
+            role: data.role,
             email: data.email,
-            firstName: data.firstName,
-            lastName: data.lastName,
+            fullName: data.fullName,
             description: data.description,
             createdAt: new Date()
         });

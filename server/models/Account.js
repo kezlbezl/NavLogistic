@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const Schema = mongoose.Schema;
 const AccountSchema = new Schema({
@@ -21,14 +22,6 @@ const AccountSchema = new Schema({
         type: String,
         required: true
     },
-    /* firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    }, */
     description: {
         type: String
     },
@@ -39,9 +32,10 @@ const AccountSchema = new Schema({
 }, {
     collection: 'AccountCollection'
 });
-AccountSchema.pre('create', function(next) {
+AccountSchema.pre('save', function(next) {
     if (this.isModified('password') || this.isNew()) {
-        this.password
+        this.password = bcrypt.hashSync(this.password, 12);
+        next();
     }
 })
 const Account = mongoose.model('Account', AccountSchema);
