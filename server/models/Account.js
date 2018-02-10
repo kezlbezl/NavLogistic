@@ -33,9 +33,15 @@ const AccountSchema = new Schema({
         type: String
     },
     createdAt: {
-        type: Date
+        type: Date,
+        default: Date.now
     }
 }, {
     collection: 'AccountCollection'
 });
+AccountSchema.pre('create', function(next) {
+    if (this.isModified('password') || this.isNew()) {
+        this.password
+    }
+})
 const Account = mongoose.model('Account', AccountSchema);
