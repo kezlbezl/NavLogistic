@@ -2,12 +2,18 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const model = require('../models/Account');
 const config = require('../../config.json');
+const _ = require('lodash');
 
 const Account = mongoose.model('Account');
 
 function findAccountByProperty(login) {
     return Account
-        .find({ login })
+        .find({
+            login: {
+                $regex: _.escapeRegExp(login),
+                $options: 'i'
+            }
+        })
         .lean()
         .exec((err, accountList) => {
             if (err) return console.error('AccountCollection: findAccountByProperty', err);
