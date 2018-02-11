@@ -21,7 +21,7 @@ module.exports = (app, express, db) => {
             .then(data => resp.send(data))
             .catch(error => {
                 console.log(`createAccount error ${error}`);
-                resp.send(error.toString());
+                resp.status(400).send(error.toString());
             });
     });
     app.delete('/accounts/:id', (req, resp) => {

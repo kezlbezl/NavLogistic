@@ -8,7 +8,7 @@ const Account = mongoose.model('Account');
 
 function findAccountByProperty(login) {
     return Account
-        .find({
+        .find({ // improve FindOne!
             login: {
                 $regex: _.escapeRegExp(login),
                 $options: 'i'
