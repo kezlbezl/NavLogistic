@@ -3,22 +3,29 @@
 const auth = require('./../authentication/authentication.js');
 const path = require('path');
 
-module.exports = (app, express) => {
+module.exports = (app, express, db) => {
     app.use('/public', express.static('./client/public'));
 
     app.get('/', auth.checkAuth, (req, resp) => {
         resp.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
-    })
+    });
+    app.post('/login', (req, resp) => {
+
+    });
     app.get('/accounts', (req, resp) => {
         db.getAccountList()
             .then(data => resp.send(data));
-    })
+    });
     app.post('/accounts', (req, resp) => {
         db.createAccount(req.body)
-            .then(data => resp.send(data));
-    })
+            .then(data => resp.send(data))
+            .catch(error => {
+                console.log(`createAccount error ${error}`);
+                resp.send(error.toString());
+            });
+    });
     app.delete('/accounts/:id', (req, resp) => {
         db.deleteAccount(req.params.id)
             .then(data => resp.send(data));
-    })
+    });
 }
