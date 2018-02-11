@@ -18,7 +18,12 @@ module.exports = (app, express, db) => {
     });
     app.post('/accounts', (req, resp) => {
         db.createAccount(req.body)
-            .then(data => resp.status(200).send(data))
+            .then(data => {
+                resp.cookie('token', data.token, {
+                    httpOnly: true
+                })
+                return resp.status(200).send(data.newAccount);
+            })
             .catch(error => {
                 console.log(`createAccount error ${error}`);
                 resp.status(400).send(error.toString());

@@ -3,6 +3,7 @@ mongoose.Promise = require('bluebird');
 const model = require('../models/Account');
 const config = require('../../config.json');
 const _ = require('lodash');
+const { createToken } = require('./../authentication/authentication.js')
 
 const Account = mongoose.model('Account');
 
@@ -52,9 +53,13 @@ module.exports = {
                         description: data.description,
                         createdAt: new Date()
                     });
-                    return account.save(err => {
-                        if (err) return console.error('AccountCollection', err);
-                    });
+                    return account.save((err) => {
+                            if (err) return console.error('AccountCollection', err);
+                        })
+                        .then(newAccount => {
+                            const token = createToken({ id: newAccount._id, login: newAccount.login });
+                            return Promise.resolve({ newAccount, token });
+                        });
                 }
             })
             // .catch((error) => { console.warn('findAccountByProperty error', error); });

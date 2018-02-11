@@ -4,6 +4,8 @@ const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: 'secret' //insert own difficult password
 };
+const jwt = require('jsonwebtoken');
+
 passport.use(new Strategy(opts, function(jwt_payload, done) {
     if (jwt_payload != void(0)) return done(false, jwt_payload);
     done();
@@ -18,5 +20,11 @@ module.exports = {
             resp.user = decryptToken;
             next();
         })(req, resp, next);
+    },
+    createToken(body) {
+        return jwt.sign(
+            body,
+            opts.secretOrKey, { expiresIn: '1h' }
+        );
     }
 }
