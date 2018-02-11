@@ -18,7 +18,7 @@ module.exports = (app, express, db) => {
     });
     app.post('/accounts', (req, resp) => {
         db.createAccount(req.body)
-            .then(data => resp.send(data))
+            .then(data => resp.status(200).send(data))
             .catch(error => {
                 console.log(`createAccount error ${error}`);
                 resp.status(400).send(error.toString());
