@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+mongoose.set('debug', true);
 const model = require('../models/Account');
 const config = require('../../config.json');
 const _ = require('lodash');

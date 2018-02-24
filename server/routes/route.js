@@ -13,7 +13,7 @@ module.exports = (app, express, db) => {
     app.post('/login', (req, resp) => {
         db.findAccountByProperty(req.body.login)
             .then(match => {
-                if (match.length > 0 || bcrypt.compareSync(req.body.password, match[0].password)) {
+                if (match.length > 0 && bcrypt.compareSync(req.body.password, match[0].password)) {
                     const token = auth.createToken({ id: match[0]._id, login: match[0].login });
                     console.warn(token);
                     resp.cookie('token', token, {

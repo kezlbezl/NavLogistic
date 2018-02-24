@@ -2,6 +2,7 @@ const passport = require('passport');
 const { Strategy, ExtractJwt } = require('passport-jwt');
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    // jwtFromRequest: CustomExtractJwt(),
     secretOrKey: 'secret' //insert own difficult password
 };
 const jwt = require('jsonwebtoken');
@@ -12,6 +13,7 @@ passport.use(new Strategy(opts, function(jwt_payload, done) {
 }));
 
 function CustomExtractJwt(req) {
+    console.warn(req)
     if (req.cookies && req.cookies.token != void(0)) {
         return req.cookies.token;
     }
