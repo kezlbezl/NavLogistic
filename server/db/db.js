@@ -29,6 +29,7 @@ module.exports = {
             }
         )
     },
+    findAccountByProperty,
     getAccountList() {
         return Account
             .find({})

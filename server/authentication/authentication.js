@@ -11,6 +11,12 @@ passport.use(new Strategy(opts, function(jwt_payload, done) {
     done();
 }));
 
+function CustomExtractJwt(req) {
+    if (req.cookies && req.cookies.token != void(0)) {
+        return req.cookies.token;
+    }
+}
+
 module.exports = {
     checkAuth(req, resp, next) {
         passport.authenticate('jwt', { session: false }, (err, decryptToken, jwtError) => {
